@@ -1,57 +1,21 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 function App() {
   return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav>
+    <div>
+      <h1>Bookkeeper</h1>
+      <nav style={{
+          borderBottom: "solid 1px",
+          paddingBottom: "1rem",
+        }}>
 
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        {/* <Switch>
-        </Switch> */}
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-      </div>
-    </Router>
+          <Link to="/invoices">Invoices</Link> | {" "}
+          <Link to="/expenses">Expenses</Link>
+      </nav>
+      <Outlet></Outlet>
+    </div>
   );
-}
-
-function Home() {
-  return <h2>Home</h2>;
-}
-
-function About() {
-  return <h2>About</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
 }
 
 export default App;
